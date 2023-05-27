@@ -231,7 +231,7 @@ app.get('/youtube/trending/countries', (req, res) =>{
 })
 
 // Youtube trending video specific country
-app.get('/youtube/trending/country/:country', (req, res) =>{
+app.get('/youtube/trending/countries/:country', (req, res) =>{
         const {country} = req.params
         const url = `https://kworb.net/youtube/trending/${country}.html`
 
