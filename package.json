@@ -4,7 +4,8 @@
   "description": "",
   "main": "musicdata.ja",
   "scripts": {
-    "start": "nodemon musicdata.js"
+    "start": "nodemon musicdata.js",
+    "build": "npm install && rimraf ./build && tsc"
   },
   "author": "",
   "license": "ISC",
