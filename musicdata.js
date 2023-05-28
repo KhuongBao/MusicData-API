@@ -804,11 +804,11 @@ app.get('/youtube/video/:videoID', (req, res) =>{
 })
 
 // Spotify get global/country chart daily/weekly or total daily/weekly
-app.get('/spotify/chart/:location/:timeframe', (req, res) =>{
-    const {location} = req.params
+app.get('/spotify/chart/:countryID/:timeframe', (req, res) =>{
+    const {countryID} = req.params
     var {timeframe} = req.params
     timeframe = "_" + timeframe
-    const url = `https://kworb.net/spotify/country/${location}${timeframe}.html`
+    const url = `https://kworb.net/spotify/country/${countryID}${timeframe}.html`
 
     fetch(url)
         .then(response => {
