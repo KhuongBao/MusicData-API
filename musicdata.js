@@ -2,7 +2,7 @@ const $ = require("jquery")
 const express = require("express")
 const axios = require("axios")
 const cheerio = require("cheerio")
-const fetch = require("node-fetch");
+import fetch from "node-fetch";
 
 const app = express()
 const PORT = 9000
