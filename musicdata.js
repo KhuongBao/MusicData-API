@@ -772,6 +772,7 @@ app.get('/youtube/video/:videoID', (req, res) =>{
             
             //Split \n to JSON object
             let json = {}
+            let rest = {}
             let lines = other.split('\n')
             for (let line of lines) {
                 let colonIndex = line.indexOf(':')
