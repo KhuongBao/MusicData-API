@@ -282,7 +282,9 @@ app.get('/youtube/trending/countries/:country', (req, res) =>{
                 }
                 res.send(data)
             })
-            )
+            ).catch(error => {
+                res.json('Error fetching data:', error)
+                })
           }
         })
         .catch(error => {
