@@ -1051,7 +1051,28 @@ app.get('/spotify/artist/:artistID', (req, res) =>{
                 const _ = cheerio.load(html)
                 const data = []
 
-                    if (url.includes("_info") == true){    
+                    if (url.includes("_albums") == true){
+                        _('.addpos.sortable tbody tr', html).each(function(){
+                            const title = _(this).find("a").text()
+                            const link = _(this).find("a").attr("href")
+                            const streams = _(this).find("td").eq(1).text()
+                            const daily = _(this).find("td").eq(2).text()
+                            
+                            data.push({title, link, streams, daily})
+                        })
+                        res.send(data)
+                    }else if (url.includes("_songs") == true) {
+                        _('.addpos.sortable tbody tr', html).each(function(){
+                            const track = _(this).find("td").find("a").text()
+                            const link = _(this).find("td").find("a").attr("href")
+                            const streams = _(this).find("td").eq(1).html()
+                            const daily_streams = _(this).find("td").eq(2).html()
+                            
+                            data.push({track, link, streams, daily_streams})
+                        })
+                        res.send(data)
+                        
+                    }else{    
                         const streams = []
                         const daily = []
                         const tracks = []  
@@ -1072,34 +1093,23 @@ app.get('/spotify/artist/:artistID', (req, res) =>{
                             column += 1
                         })
                         res.send({streams, daily, tracks})
-                    }else if (url.includes("_albums") == true){
-                        _('.addpos.sortable tbody tr', html).each(function(){
-                            const title = _(this).find("a").text()
-                            const link = _(this).find("a").attr("href")
-                            const streams = _(this).find("td").eq(1).text()
-                            const daily = _(this).find("td").eq(2).text()
-                            
-                            data.push({title, link, streams, daily})
-                        })
-                        res.send(data)
-                        
-                    }else if(url.includes("_peak") == true){
-                        _('.sortable tbody tr', html).each(function(){
-                            const title = _(this).find("a").text()
-                            const link = _(this).find("a").attr("href")
-                            const streams = _(this).find("td").eq(2).text()
-
-                            let dict = []
-                            for (let i = 3; i < 79; i++){
-                                dict.push({
-                                    key : _(".sortable thead tr").find("th").eq(i).text(),
-                                    value : _(".sortable tbody tr").find("td").eq(i).text()
-                                })
-                            }
-                        })
-
-                        data.push({title, link, peak_date, streams, dict})
                     }
+                    // }else if(url.includes("_peak") == true){
+                    //     _('.sortable tbody tr', html).each(function(){
+                    //         const title = _(this).find("a").text()
+                    //         const link = _(this).find("a").attr("href")
+                    //         const streams = _(this).find("td").eq(2).text()
+
+                    //         let dict = []
+                    //         for (let i = 3; i < 79; i++){
+                    //             dict.push({
+                    //                 key : _(".sortable thead tr").find("th").eq(i).text(),
+                    //                 value : _(".sortable tbody tr").find("td").eq(i).text()
+                    //             })
+                    //         }
+                    //     })
+                    //    data.push({title, link, peak_date, streams, dict})
+                    // }
                 })
                 )
           }
