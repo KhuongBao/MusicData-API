@@ -385,9 +385,9 @@ app.get('/youtube/topartist_feat/:year', (req, res) =>{
 })
 
 // Youtube top artist by country
-app.get('/youtube/topartist/country/:nationID', (req, res) =>{
-    const {nationID} = req.params
-    const url = `https://kworb.net/youtube/topvideos_${nationID}.html`
+app.get('/youtube/topartist/:countryID', (req, res) =>{
+    const {countryID} = req.params
+    const url = `https://kworb.net/youtube/topvideos_${countryID}.html`
 
     fetch(url)
         .then(response => {
