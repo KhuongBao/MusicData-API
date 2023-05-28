@@ -244,7 +244,7 @@ app.get('/youtube/trending/countries/:country', (req, res) =>{
                 const html = response.data
                 const _ = cheerio.load(html)
                 
-                data = {}
+                var data = {}
                 const overall = []
                 const music = []
                 var ranking = "0"
