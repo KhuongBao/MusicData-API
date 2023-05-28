@@ -116,7 +116,7 @@ app.get('/youtube/weekly', (req, res) =>{
 })
 
 // Youtube weekly search by year and nth week
-app.get('/youtube/weekly/:year:nthweek', (req, res) =>{
+app.get('/youtube/weekly/:year/:nthweek', (req, res) =>{
     const {year} = req.params
     const {nthweek} = req.params
     const url = `https://kworb.net/youtube/weekly/${year}${nthweek}.html`
