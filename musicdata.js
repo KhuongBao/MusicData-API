@@ -243,7 +243,8 @@ app.get('/youtube/trending/countries/:country', (req, res) =>{
                 const kworb = (axios(url).then(response => {
                 const html = response.data
                 const _ = cheerio.load(html)
-
+                
+                data = {}
                 const overall = []
                 const music = []
                 var ranking = "0"
