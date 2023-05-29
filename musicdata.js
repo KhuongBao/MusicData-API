@@ -57,7 +57,7 @@ app.get('/youtube/24h/:lang', (req, res) =>{
     fetch(url)
         .then(response => {
           if (response.status === 404) {
-           res.send('404 Data not found')
+           res.status(404).send('404 Data not found')
           } else {
             const kworb = (axios(url).then(response => {
             const html = response.data
@@ -84,7 +84,7 @@ app.get('/youtube/24h/:lang', (req, res) =>{
           }
         })
         .catch(error => {
-          res.json('An error had occurred:', error)
+          res.status(500).json('An error had occurred:', error)
         })
 })
 
@@ -123,7 +123,7 @@ app.get('/youtube/weekly/:year/:nthweek', (req, res) =>{
     fetch(url)
         .then(response => {
           if (response.status === 404) {
-           res.send('404 Date not found')
+           res.status(404).send('404 Data not found')
           } else {
                 const kworb = (axios(url).then(response => {
                 const html = response.data
@@ -152,7 +152,7 @@ app.get('/youtube/weekly/:year/:nthweek', (req, res) =>{
           }
         })
         .catch(error => {
-          res.json('An error had occurred:', error)
+          res.status(500).json('An error had occurred:', error)
         })
 })
 
@@ -238,7 +238,7 @@ app.get('/youtube/trending/countries/:country', (req, res) =>{
         fetch(url)
         .then(response => {
           if (response.status === 404) {
-           res.send('404 Country not found')
+           res.status(404).send('404 Country not found')
           } else {
                 const kworb = (axios(url).then(response => {
                 const html = response.data
@@ -288,7 +288,7 @@ app.get('/youtube/trending/countries/:country', (req, res) =>{
           }
         })
         .catch(error => {
-          res.json('An error had occurred:', error)
+          res.status(500).json('An error had occurred:', error)
         })
 })
 
@@ -324,7 +324,7 @@ app.get('/youtube/topartist/:year', (req, res) =>{
     fetch(url)
         .then(response => {
           if (response.status === 404) {
-           res.send('404 Year not found')
+           res.status(404).send('404 Year not found')
           } else {
                 const kworb = (axios(url).then(response => {
                 const html = response.data
@@ -346,7 +346,7 @@ app.get('/youtube/topartist/:year', (req, res) =>{
           }
         })
         .catch(error => {
-          res.json('An error had occurred:', error)
+          res.status(500).json('An error had occurred:', error)
         })
 })
 
@@ -358,7 +358,7 @@ app.get('/youtube/topartist_feat/:year', (req, res) =>{
     fetch(url)
         .then(response => {
           if (response.status === 404) {
-           res.send('404 Year not found')
+           res.status(404).send('404 Year not found')
           } else {
                 const kworb = (axios(url).then(response => {
                 const html = response.data
@@ -380,7 +380,7 @@ app.get('/youtube/topartist_feat/:year', (req, res) =>{
           }
         })
         .catch(error => {
-          res.json('An error had occurred:', error)
+          res.status(500).json('An error had occurred:', error)
         })
 })
 
@@ -392,7 +392,7 @@ app.get('/youtube/topviews/artist/:nationality', (req, res) =>{
     fetch(url)
         .then(response => {
           if (response.status === 404) {
-           res.send('404 Year not found')
+           res.status(404).send('404 Year not found')
           } else {
                 const kworb = (axios(url).then(response => {
                 const html = response.data
@@ -420,7 +420,7 @@ app.get('/youtube/topviews/artist/:nationality', (req, res) =>{
           }
         })
         .catch(error => {
-          res.json('An error had occurred:', error)
+          res.status(500).json('An error had occurred:', error)
         })
 })
 
@@ -432,7 +432,7 @@ app.get('/youtube/artist/:artistName', (req, res) =>{
         fetch(url)
         .then(response => {
           if (response.status === 404) {
-           res.send('404 Artist not found')
+           res.status(404).send('404 Artist not found')
           } else {
                 const kworb = (axios(url).then(response => {
                 const html = response.data
@@ -470,7 +470,7 @@ app.get('/youtube/artist/:artistName', (req, res) =>{
           }
         })
         .catch(error => {
-          res.json('An error had occurred:', error)
+          res.status(500).json('An error had occurred:', error)
         })
 })
 
@@ -509,7 +509,7 @@ app.get('/youtube/global/:countryID/:timeframe', (req, res) =>{
         fetch(url)
         .then(response => {
           if (response.status === 404) {
-           res.send('404 Chart not found')
+           res.status(404).send('404 Chart not found')
           } else if (url.includes("_daily")){
                 const kworb = (axios(url).then(response => {
                 const html = response.data
@@ -551,7 +551,7 @@ app.get('/youtube/global/:countryID/:timeframe', (req, res) =>{
           }
         })
         .catch(error => {
-          res.json('An error had occurred:', error)
+          res.status(500).json('An error had occurred:', error)
         })
 })
 
@@ -591,7 +591,7 @@ app.get('/youtube/topviews/:year', (req, res) =>{
     fetch(url)
         .then(response => {
           if (response.status === 404) {
-           res.send('404 Year not found')
+           res.status(404).send('404 Year not found')
           } else {
                 const kworb = (axios(url).then(response => {
                 const html = response.data
@@ -618,7 +618,7 @@ app.get('/youtube/topviews/:year', (req, res) =>{
           }
         })
         .catch(error => {
-          res.json('An error had occurred:', error)
+          res.status(500).json('An error had occurred:', error)
         })
 })
 
@@ -630,7 +630,7 @@ app.get('/youtube/topviews/published/:year', (req, res) =>{
     fetch(url)
         .then(response => {
           if (response.status === 404) {
-           res.send('404 Year not found')
+           res.status(404).send('404 Year not found')
           } else {
                 const kworb = (axios(url).then(response => {
                 const html = response.data
@@ -658,7 +658,7 @@ app.get('/youtube/topviews/published/:year', (req, res) =>{
           }
         })
         .catch(error => {
-          res.json('An error had occurred:', error)
+          res.status(500).json('An error had occurred:', error)
         })
 })
 
@@ -724,7 +724,7 @@ app.get('/youtube/milestone/:milestone', (req, res) =>{
         fetch(url)
         .then(response => {
           if (response.status === 404) {
-           res.send('404 Milestone not found')
+           res.status(404).send('404 Milestone not found')
           } else {
                 const kworb = (axios(url).then(response => {
                 const html = response.data
@@ -750,7 +750,7 @@ app.get('/youtube/milestone/:milestone', (req, res) =>{
           }
         })
         .catch(error => {
-          res.json('An error had occurred:', error)
+          res.status(500).json('An error had occurred:', error)
         })
 })
 
@@ -762,7 +762,7 @@ app.get('/youtube/video/:videoID', (req, res) =>{
     fetch(url)
     .then(response => {
       if (response.status === 404) {
-       res.send('404 Video ID not found')
+       res.status(404).send('404 Video ID not found')
       } else {
             const kworb = (axios(url).then(response => {
             const html = response.data
@@ -805,7 +805,7 @@ app.get('/youtube/video/:videoID', (req, res) =>{
       } 
     })
     .catch(error => {
-      res.json('An error had occurred:', error)
+      res.status(500).json('An error had occurred:', error)
     })
 })
 
@@ -819,7 +819,7 @@ app.get('/spotify/chart/:countryID/:timeframe', (req, res) =>{
     fetch(url)
         .then(response => {
           if (response.status === 404) {
-           res.send('404 Chart not found')
+           res.status(404).send('404 Chart not found')
           } else {
                 const kworb = (axios(url).then(response => {
                 const html = response.data
@@ -898,7 +898,7 @@ app.get('/spotify/chart/:countryID/:timeframe', (req, res) =>{
           }
         })
         .catch(error => {
-          res.json('An error had occurred:', error)
+          res.status(500).json('An error had occurred:', error)
         })
 })
 
@@ -1001,7 +1001,7 @@ app.get('/spotify/topsongs/:year', (req, res) =>{
         fetch(url)
         .then(response => {
           if (response.status === 404) {
-           res.send('404 List not found')
+           res.status(404).send('404 List not found')
           } else {
             const kworb = (axios(url).then(response => {
             const html = response.data
@@ -1024,7 +1024,7 @@ app.get('/spotify/topsongs/:year', (req, res) =>{
           }
         })
     .catch(error => {
-        res.json('An error had occurred:', error)
+        res.status(500).json('An error had occurred:', error)
     })
 })
 
@@ -1050,7 +1050,7 @@ app.get('/spotify/artist/:artistID', (req, res) =>{
     fetch(url)
         .then(response => {
           if (response.status === 404) {
-           res.send('404 Data not found')
+           res.status(404).send('404 Data not found')
           } else {
                 const kworb = (axios(url).then(response => {
                 const html = response.data
@@ -1121,7 +1121,7 @@ app.get('/spotify/artist/:artistID', (req, res) =>{
           }
         })
         .catch(error => {
-          res.json('An error had occurred:', error)
+          res.status(500).json('An error had occurred:', error)
         })
 })
 
