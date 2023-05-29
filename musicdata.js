@@ -496,14 +496,20 @@ app.get('/youtube/global', (req, res) =>{
 })
 
 // Weekly/Daily country Youtube chart
-app.get('/youtube/global/:countryID', (req, res) =>{
+app.get('/youtube/global/:countryID/:timeframe', (req, res) =>{
         const {countryID} = req.params
-        const url = `https://kworb.net/youtube/insights/${countryID}.html`
+        const {timeframe} = req.params 
+        var url = ''
+        if (timeframe.includes("daily") == true){
+            url = `https://kworb.net/youtube/insights/${countryID}_${timeframe}.html`
+        }else{
+            url = `https://kworb.net/youtube/insights/${countryID}.html`
+        }
 
         fetch(url)
         .then(response => {
           if (response.status === 404) {
-           res.send('404 Artist not found')
+           res.send('404 Chart not found')
           } else if (url.includes("_daily")){
                 const kworb = (axios(url).then(response => {
                 const html = response.data
